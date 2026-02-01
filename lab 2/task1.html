@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Facebook Login</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            background-color: #f0f2f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .left {
+            max-width: 400px;
+        }
+
+        .left h1 {
+            color: #1877f2;
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .left p {
+            font-size: 20px;
+            color: #1c1e21;
+        }
+
+        .login-box {
+            background: #fff;
+            padding: 20px;
+            width: 360px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 12px;
+            font-size: 16px;
+            border: 1px solid #dddfe2;
+            border-radius: 6px;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: #1877f2;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-bottom: 12px;
+        }
+
+        .login-btn:hover {
+            background: #166fe5;
+        }
+
+        .forgot {
+            display: block;
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: #1877f2;
+            text-decoration: none;
+        }
+
+        .forgot:hover {
+            text-decoration: underline;
+        }
+
+        .divider {
+            border-top: 1px solid #dadde1;
+            margin: 20px 0;
+        }
+
+        .create-btn {
+            background: #42b72a;
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .create-btn:hover {
+            background: #36a420;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="left">
+        <h1>facebook</h1>
+        <p>Facebook помогает вам всегда оставаться на связи и общаться со своими знакомыми.</p>
+    </div>
+
+    <div class="login-box">
+        <input type="text" placeholder="Электронный адрес или номер телефона">
+        <input type="password" placeholder="Пароль">
+        <button class="login-btn">Вход</button>
+        <a href="#" class="forgot">Забыли пароль?</a>
+        <div class="divider"></div>
+        <button class="create-btn">Создать новый аккаунт</button>
+    </div>
+</div>
+
+</body>
+</html>
+
+
+
