@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Login Page</title>
+    <style>
+        /* Общие стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #262626;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Контейнер на две колонки */
+        .main-container {
+            display: flex;
+            flex: 1;
+            align-items: center;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 20px;
+        }
+
+        /* Левая часть: Приветствие */
+        .hero-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding-right: 40px;
+        }
+
+        .insta-logo-main {
+            width: 60px;
+            margin-bottom: 25px;
+        }
+
+        .hero-section h1 {
+            font-size: 36px;
+            font-weight: 600;
+            line-height: 1.2;
+            max-width: 450px;
+            margin-bottom: 40px;
+            letter-spacing: -1px;
+        }
+
+        .gradient-text {
+            background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .mockup-container img {
+            max-width: 100%;
+            height: auto;
+            /* Здесь имитация коллажа из вашего скрина */
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+        }
+
+        /* Правая часть: Форма */
+        .auth-section {
+            flex: 1;
+            padding-left: 80px;
+            border-left: 1px solid #dbdbdb;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 350px;
+        }
+
+        .login-card h2 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        form input {
+            width: 100%;
+            padding: 12px 10px;
+            margin-bottom: 8px;
+            border: 1px solid #dbdbdb;
+            border-radius: 8px;
+            background: #fafafa;
+            font-size: 12px;
+        }
+
+        form input:focus {
+            outline: none;
+            border-color: #a8a8a8;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 10px;
+            background-color: #adc8f0; /* Цвет неактивной кнопки с макета */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .forgot-password {
+            display: block;
+            text-align: center;
+            font-size: 12px;
+            color: #00376b;
+            text-decoration: none;
+            margin: 20px 0;
+        }
+
+        .btn-fb {
+            width: 100%;
+            padding: 10px;
+            background: white;
+            border: 1px solid #dbdbdb;
+            border-radius: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+
+        .btn-create-acc {
+            width: 100%;
+            padding: 10px;
+            background: white;
+            border: 1px solid #0095f6;
+            color: #0095f6;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .meta-footer-logo {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .meta-footer-logo img {
+            width: 60px;
+            opacity: 0.8;
+        }
+
+        /* Нижнее меню */
+        .site-footer {
+            padding: 20px;
+            font-size: 12px;
+            color: #8e8e8e;
+            text-align: center;
+            border-top: 1px solid #efefef;
+        }
+
+        .footer-links {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: #8e8e8e;
+        }
+
+        /* Адаптивность для мобилок */
+        @media (max-width: 800px) {
+            .main-container {
+                flex-direction: column;
+            }
+            .hero-section {
+                padding-right: 0;
+                margin-bottom: 40px;
+            }
+            .auth-section {
+                padding-left: 0;
+                border-left: none;
+                border-top: 1px solid #dbdbdb;
+                padding-top: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="main-container">
+        <section class="hero-section">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram" class="insta-logo-main">
+            <h1>Посмотрите, какими моментами из жизни поделились ваши <span class="gradient-text">близкие друзья</span>.</h1>
+            <div class="mockup-container">
+                <img src="https://i.imgur.com/8N69f1V.png" alt="Friends Moments">
+            </div>
+        </section>
+
+        <section class="auth-section">
+            <div class="login-card">
+                <h2>Войти в Instagram</h2>
+                <form>
+                    <input type="text" placeholder="Имя пользователя, номер мобильного телефона или электронная почта">
+                    <input type="password" placeholder="Пароль">
+                    <button type="submit" class="btn-submit">Войти</button>
+                </form>
+                
+                <a href="#" class="forgot-password">Забыли пароль?</a>
+
+                <button class="btn-fb">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" width="16" alt="fb">
+                    Войти через Facebook
+                </button>
+                
+                <button class="btn-create-acc">Создать новый аккаунт</button>
+
+                <div class="meta-footer-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" alt="Meta">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="#">Meta</a>
+            <a href="#">Информация</a>
+            <a href="#">Блог</a>
+            <a href="#">Вакансии</a>
+            <a href="#">Помощь</a>
+            <a href="#">API</a>
+            <a href="#">Конфиденциальность</a>
+            <a href="#">Условия</a>
+            <a href="#">Места</a>
+            <a href="#">Instagram Lite</a>
+            <a href="#">Threads</a>
+        </div>
+        <div class="footer-copy">
+            Русский ˇ &copy; 2026 Instagram from Meta
+        </div>
+    </footer>
+
+</body>
+</html>
+
