@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Pricing Layout</title>
+    <style>
+        /* Общие стили и переменные */
+        :root {
+            --primary-black: #1b1f23;
+            --github-blue: #0969da;
+            --border-gray: #d0d7de;
+            --text-muted: #57606a;
+            --bg-light: #f6f8fa;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            color: var(--primary-black);
+            line-height: 1.5;
+            background-color: #ffffff;
+            padding-bottom: 100px;
+        }
+
+        /* Hero секция */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        .btn-main-cta {
+            background: var(--primary-black);
+            color: white;
+            padding: 12px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-main-cta:hover {
+            background: #333;
+        }
+
+        /* Контейнер тарифных планов */
+        .pricing-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .pricing-grid {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        /* Карточки тарифов */
+        .card {
+            flex: 1;
+            min-width: 320px;
+            max-width: 380px;
+            border: 1px solid var(--border-gray);
+            border-radius: 8px;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            background: #fff;
+        }
+
+        /* Стиль для "Recommended" (Enterprise) */
+        .card.recommended {
+            border: 2px solid var(--github-blue);
+        }
+
+        .recommended-badge {
+            position: absolute;
+            top: -14px;
+            left: -2px;
+            right: -2px;
+            background: var(--github-blue);
+            color: white;
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 6px 0;
+            border-radius: 8px 8px 0 0;
+            text-transform: uppercase;
+        }
+
+        .card h3 {
+            font-size: 1.75rem;
+            margin-bottom: 8px;
+        }
+
+        .card .subtitle {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            min-height: 40px;
+            margin-bottom: 24px;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .price span {
+            font-size: 1rem;
+            font-weight: 400;
+            vertical-align: middle;
+        }
+
+        .per-month {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        /* Кнопки внутри карточек */
+        .card-btn {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            margin-bottom: 12px;
+            border: 1px solid var(--border-gray);
+            background: #fff;
+            transition: 0.2s;
+        }
+
+        .card-btn.primary {
+            background: var(--primary-black);
+            color: white;
+            border: none;
+        }
+
+        .card-btn.outline {
+            color: var(--github-blue);
+        }
+
+        /* Список функций */
+        .features {
+            list-style: none;
+            margin-top: 24px;
+            font-size: 0.9rem;
+        }
+
+        .features li {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .features li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+
+        /* Секция Add-ons */
+        .addons-section {
+            max-width: 1200px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+        }
+
+        .addons-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            text-align: left;
+        }
+
+        .addons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 16px;
+        }
+
+        .addon-card {
+            border: 1px solid var(--border-gray);
+            padding: 24px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            transition: box-shadow 0.2s;
+        }
+
+        .addon-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .addon-card h4 {
+            font-size: 1.1rem;
+            color: var(--github-blue);
+        }
+
+        .addon-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Адаптивность для мобильных */
+        @media (max-width: 768px) {
+            .pricing-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            .card {
+                max-width: 100%;
+                width: 100%;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <h1>Try the Copilot-powered platform</h1>
+        <p>We get it, there's a lot you can do with GitHub. That's why we've packed all of it into a single risk-free trial that includes GitHub Enterprise, Copilot, and Advanced Security.</p>
+        <button class="btn-main-cta">Start free for 30 days</button>
+    </header>
+
+    <section class="pricing-section">
+        <div class="pricing-grid">
+            
+            <article class="card">
+                <h3>Free</h3>
+                <p class="subtitle">The basics for individuals and organizations</p>
+                <div class="price"><span>$</span>0 <span>USD</span></div>
+                <p class="per-month">per user / month</p>
+                <button class="card-btn">Join for free</button>
+                <ul class="features">
+                    <li>Unlimited public/private repositories</li>
+                    <li>Dependabot security updates</li>
+                    <li>2,000 CI/CD minutes/month</li>
+                    <li>500MB of Packages storage</li>
+                </ul>
+            </article>
+
+            <article class="card">
+                <h3>Team</h3>
+                <p class="subtitle">Advanced collaboration for individuals and organizations</p>
+                <div class="price"><span>$</span>4 <span>USD</span></div>
+                <p class="per-month">per user / month</p>
+                <button class="card-btn primary">Continue with Team</button>
+                <ul class="features">
+                    <li>Everything included in Free, plus...</li>
+                    <li>Access to GitHub Codespaces</li>
+                    <li>Protected branches</li>
+                    <li>Multiple reviewers in pull requests</li>
+                </ul>
+            </article>
+
+            <article class="card recommended">
+                <div class="recommended-badge">Recommended</div>
+                <h3>Enterprise</h3>
+                <p class="subtitle">Security, compliance, and flexible deployment</p>
+                <div class="price"><span>$</span>21 <span>USD</span></div>
+                <p class="per-month">per user / month</p>
+                <button class="card-btn primary">Start a free trial</button>
+                <button class="card-btn outline">Contact Sales</button>
+                <ul class="features">
+                    <li>Everything included in Team, plus...</li>
+                    <li>SAML single sign-on</li>
+                    <li>Enterprise Managed Users</li>
+                    <li>Advanced auditing</li>
+                </ul>
+            </article>
+
+        </div>
+    </section>
+
+    <section class="addons-section">
+        <h2>Additional add-ons</h2>
+        <div class="addons-grid">
+            <div class="addon-card">
+                <h4>GitHub Copilot</h4>
+                <p>AI pair programmer that helps you write code faster with less work.</p>
+            </div>
+            <div class="addon-card">
+                <h4>Advanced Security</h4>
+                <p>Detection and prevention of security vulnerabilities in your code.</p>
+            </div>
+            <div class="addon-card">
+                <h4>Codespaces</h4>
+                <p>Instant, cloud-hosted development environments.</p>
+            </div>
+            <div class="addon-card">
+                <h4>Actions</h4>
+                <p>Automate your workflow from idea to production.</p>
+            </div>
+            <div class="addon-card">
+                <h4>Packages</h4>
+                <p>Hosting and management of software packages.</p>
+            </div>
+            <div class="addon-card">
+                <h4>Premium Support</h4>
+                <p>Get the help you need, when you need it, from GitHub experts.</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
