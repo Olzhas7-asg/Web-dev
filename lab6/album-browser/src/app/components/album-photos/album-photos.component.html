@@ -18,20 +18,11 @@
   </div>
 
   <div *ngIf="!loading && photos.length > 0" class="photo-grid">
-    <div *ngFor="let photo of photos" class="photo-card" (click)="openLightbox(photo)">
+    <div *ngFor="let photo of photos" class="photo-card">
       <img [src]="photo.thumbnailUrl" [alt]="photo.title" loading="lazy" />
       <div class="photo-overlay">
         <span class="photo-title">{{ photo.title }}</span>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- Lightbox -->
-<div class="lightbox" *ngIf="selectedPhoto" (click)="closeLightbox()">
-  <div class="lightbox-content" (click)="$event.stopPropagation()">
-    <button class="lightbox-close" (click)="closeLightbox()">✕</button>
-    <img [src]="selectedPhoto.url" [alt]="selectedPhoto.title" />
-    <p class="lightbox-title">{{ selectedPhoto.title }}</p>
   </div>
 </div>

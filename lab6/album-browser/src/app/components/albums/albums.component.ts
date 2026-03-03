@@ -5,10 +5,6 @@ import { AlbumService } from '../../services/album.service';
 import { Album } from '../../models/album.model';
 import { Photo } from '../../models/photo.model';
 
-function carCoverUrl(make: string): string {
-  return `https://cdn.imagin.studio/getimage?customer=img&make=${encodeURIComponent(make)}&paintId=color-ff0000&angle=23`;
-}
-
 interface AlbumWithCover extends Album {
   coverUrl?: string;
 }
@@ -30,11 +26,12 @@ export class AlbumsComponent implements OnInit {
   ngOnInit(): void {
     this.albumService.getAlbums().subscribe({
       next: (data) => {
-        this.albums = data.map(a => ({
-          ...a,
-          coverUrl: carCoverUrl(a.title)
-        }));
+        this.albums = data;
         this.loading = false;
+        // Load cover photo for each album (first photo)
+        this.albums.forEach(album => {
+          album.coverUrl = `https://picsum.photos/seed/${album.id * 10}/150/150`;
+        });
       },
       error: () => {
         this.error = 'Failed to load albums. Please try again.';
