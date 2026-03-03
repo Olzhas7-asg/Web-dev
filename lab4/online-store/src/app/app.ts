@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Product } from './model';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -11,6 +12,7 @@ import { Product } from './model';
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
+
 export class AppComponent {
 
   products: Product[] = [

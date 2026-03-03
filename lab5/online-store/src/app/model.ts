@@ -1,13 +1,4 @@
-export interface Product {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  rating: number;
-  image: string;
-  images: string[];
-  link: string;
-}
+
 import { Component } from '@angular/core';
 import { ProductService } from './services/product'; 
 import { Category } from './models/category.model';

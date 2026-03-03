@@ -1,0 +1,37 @@
+<div class="albums-container">
+  <div class="page-header">
+    <div class="label">JSONPlaceholder API</div>
+    <h1>All Albums <span *ngIf="!loading" class="count">({{ albums.length }})</span></h1>
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    <div class="spinner"></div>
+    <span>Loading albums…</span>
+  </div>
+
+  <div *ngIf="error" class="error-msg">{{ error }}</div>
+
+  <div *ngIf="!loading && !error && albums.length === 0" class="empty">
+    No albums found.
+  </div>
+
+  <ul *ngIf="!loading && albums.length > 0" class="album-list">
+    <li
+      *ngFor="let album of albums"
+      class="album-item"
+      (click)="goToDetail(album.id)"
+    >
+      <div class="album-cover">
+        <img *ngIf="album.coverUrl" [src]="album.coverUrl" [alt]="album.title" />
+        <div *ngIf="!album.coverUrl" class="cover-placeholder">◈</div>
+      </div>
+      <span class="album-id">#{{ album.id }}</span>
+      <span class="album-title">{{ album.title }}</span>
+      <button
+        class="btn-delete"
+        (click)="deleteAlbum($event, album.id)"
+        title="Delete album"
+      >✕</button>
+    </li>
+  </ul>
+</div>

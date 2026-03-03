@@ -1,0 +1,37 @@
+<div class="photos-container">
+  <button class="btn-back" (click)="goBack()">← Back to Album</button>
+
+  <div class="page-header">
+    <div class="label">Album #{{ albumId }}</div>
+    <h1>Photos <span *ngIf="!loading" class="count">({{ photos.length }})</span></h1>
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    <div class="spinner"></div>
+    <span>Loading photos…</span>
+  </div>
+
+  <div *ngIf="error" class="error-msg">{{ error }}</div>
+
+  <div *ngIf="!loading && photos.length === 0 && !error" class="empty">
+    No photos found for this album.
+  </div>
+
+  <div *ngIf="!loading && photos.length > 0" class="photo-grid">
+    <div *ngFor="let photo of photos" class="photo-card" (click)="openLightbox(photo)">
+      <img [src]="photo.thumbnailUrl" [alt]="photo.title" loading="lazy" />
+      <div class="photo-overlay">
+        <span class="photo-title">{{ photo.title }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" *ngIf="selectedPhoto" (click)="closeLightbox()">
+  <div class="lightbox-content" (click)="$event.stopPropagation()">
+    <button class="lightbox-close" (click)="closeLightbox()">✕</button>
+    <img [src]="selectedPhoto.url" [alt]="selectedPhoto.title" />
+    <p class="lightbox-title">{{ selectedPhoto.title }}</p>
+  </div>
+</div>

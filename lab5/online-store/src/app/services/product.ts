@@ -10,7 +10,7 @@ export class ProductService {
     { id: 2, name: 'Laptops' },
     { id: 3, name: 'Headphones' },
     { id: 4, name: 'Tablets' },
-    { id: 5, name: 'Cosmetics'}
+    { id: 5, name: 'Cosmetics'}   
   ];
 
   products: Product[] = [
