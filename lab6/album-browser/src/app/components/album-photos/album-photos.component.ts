@@ -27,7 +27,7 @@ export class AlbumPhotosComponent implements OnInit {
     this.albumId = Number(this.route.snapshot.paramMap.get('id'));
     this.albumService.getAlbumPhotos(this.albumId).subscribe({
       next: (data) => {
-        this.photos = data.slice(0, 5).map((photo, index) => ({
+        this.photos = data.slice(0, 20).map((photo, index) => ({
           ...photo,
           thumbnailUrl: `https://picsum.photos/seed/${this.albumId * 10 + index}/150/150`,
           url: `https://picsum.photos/seed/${this.albumId * 10 + index}/600/600`
@@ -45,3 +45,4 @@ export class AlbumPhotosComponent implements OnInit {
     this.router.navigate(['/albums', this.albumId]);
   }
 }
+  
